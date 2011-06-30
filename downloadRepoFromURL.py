@@ -7,22 +7,28 @@
 import urllib2, json, sys, os
 from commands import getoutput as cmd
 
+
 # Reads the arguments from the command prompt
 # If there are 3 arguments then it contains the 
 # 	repository name and the file to be executed
-f = urllib2.urlopen('http://dl.dropbox.com/u/4972572/get_next_job')
+args = sys.argv
+if len(args)==3:
+	repoFolder = args[1]
+	fExecute = args[2]
+else:
+	f = urllib2.urlopen('http://dl.dropbox.com/u/4972572/get_next_job')
 
-# Decode the JSON string from URL
-jsonStr = json.load(f)
-f.close()
+	# Decode the JSON string from URL
+	jsonStr = json.load(f)
+	f.close()
 
-# Obtain the repository and command strings
-repos = jsonStr['repo'].strip()
-fExecute = jsonStr['command'].strip()
+	# Obtain the repository and command strings
+	repos = jsonStr['repo'].strip()
+	fExecute = jsonStr['command'].strip()
 
-# Obtain the folder from the git URL
-sp = repos.partition('/')
-repoFolder = sp[2].replace('.git','')
+	# Obtain the folder from the git URL
+	sp = repos.partition('/')
+	repoFolder = sp[2].replace('.git','')
 
 # If the directory exists, update the folder with
 # the latest code from git
@@ -39,6 +45,6 @@ else:
 # Execute the command retrieved from the JSON string
 print('Executing \"' + fExecute + '\" with output...')
 try:
-	os.system(fExecute)
+	os.system('python ' + fExecute.replace('python ','').strip())
 except OSError:
 	pass
