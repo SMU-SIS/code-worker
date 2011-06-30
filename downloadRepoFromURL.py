@@ -15,6 +15,8 @@ args = sys.argv
 if len(args)==3:
 	repoFolder = args[1]
 	fExecute = args[2]
+	repos = 'git@github.com:karthikmswamy/' + repoFolder + '.git'
+	print repos
 else:
 	f = urllib2.urlopen('http://dl.dropbox.com/u/4972572/get_next_job')
 
