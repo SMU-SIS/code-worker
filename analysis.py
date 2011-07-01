@@ -4,7 +4,7 @@
 import json
 
 fName = "ccresult.json"
-textToWrite = "{'answer' : 42}"
+textToWrite = "{'answer':42}"
 FILE = open(fName, "w")
 FILE.writelines(textToWrite)
 FILE.close()
