@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/common/ureports
+END
+nodes.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/common/ureports/nodes.py
+END
+docbook_writer.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/common/ureports/docbook_writer.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/common/ureports/__init__.py
+END
+html_writer.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/common/ureports/html_writer.py
+END
+text_writer.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/common/ureports/text_writer.py
+END
