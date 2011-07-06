@@ -26,16 +26,22 @@ for k in result:
 #Now that we now that there are no TEST jobs that have not been marked as PROCESSED, we can create some new TEST jobs for the worker to process. 
 result = get_unprocessed_test_jobs()
 
-test_commands = ['python -V', 
-				'java -version', 
-				'git --version', 
-				'python code-worker/tasks/clonedigger/clonedigger.py -h', 
-				'python code-worker/tasks/pep8/pep8.py -h']
+test_jobs = [{'command':'python -V', 'jobType':'TEST'}, 
+			 {'command':'java -version', 'jobType':'TEST'}, 
+			 {'command':'git --version', 'jobType':'TEST'}, 
+			 {'command':'python code-worker/tasks/pep8/pep8.py -h', 'jobType':'TEST'},
+			 {'command':'python code-worker/tasks/clonedigger/clonedigger.py -h', 'jobType':'TEST'}, 
+			 #{'command':'code-worker/tasks/pep8/pep8.py -h', 'jobType':'TEST'}, #let pep8.py be executible without typing python or path
+			 #{'command':'code-worker/tasks/clonedigger/clonedigger.py -h', 'jobType':'TEST'}, 
+			 {'command':'python code-worker/tasks/pep8/pep8.py target --count -qq', #target repo should be downloaded to target directory. master repo should be downloaded to master directory
+			  'target':'git@github.com:SMU-SIS/code-worker.git',
+			  'jobType':'TEST'},
+			 ]
 
-for command in test_commands:
+for job in test_jobs:
   url = baseurl+'Job'
-  data = json.dumps({'command':command, 'jobType':'TEST'})
-  print 'Creating job to run command', command, url, data                  
+  data = json.dumps(job)
+  print 'Creating job to run command', url, data                  
   result = json.loads(urllib2.urlopen(urllib2.Request(url, data, {'Content-Type': 'application/json'})).read())
 
 result = get_unprocessed_test_jobs()
