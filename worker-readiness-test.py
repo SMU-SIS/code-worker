@@ -26,7 +26,13 @@ for k in result:
 #Now that we now that there are no TEST jobs that have not been marked as PROCESSED, we can create some new TEST jobs for the worker to process. 
 result = get_unprocessed_test_jobs()
 
-for command in ['python -V', 'java -version', 'git --version']:
+test_commands = ['python -V', 
+				'java -version', 
+				'git --version', 
+				'python code-worker/tasks/clonedigger/clonedigger.py -h', 
+				'python code-worker/tasks/pep8/pep8.py -h']
+
+for command in test_commands:
   url = baseurl+'Job'
   data = json.dumps({'command':command, 'jobType':'TEST'})
   print 'Creating job to run command', command, url, data                  
