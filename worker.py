@@ -25,45 +25,71 @@ def mainWorker():
 def fetchJobFromURL(job):
 	print 'Processing job: ' + job
 	# Concatenate with the base URL
-	URL = baseURL + job
-	f = urllib2.urlopen(URL)
-	req = f.read()
+	URL = baseURL + job + '?feq_jobType=TEST&fne_status=PROCESSED'
+	# For testing: remove itr otherwise
+	# Will be replaced with while True or any other break condition
+	itr = 10
+	for i in range(0,10):
+		f = urllib2.urlopen(URL)
+		req = f.read()
 
-	jobStr = json.loads(req)
-	for i in range(0, len(jobStr)):
-		fetchURL = URL + '/' + jobStr[i]['key']
-		fetchModelFromURL(fetchURL)
+		jobStr = json.loads(req)
+		numJobs = len(jobStr)
+		print 'There are ' + str(numJobs) + ' TEST jobs pending'
+		# There are no jobs pending, hence sleep and check again
+		if numJobs == 0:
+			# Checks to see if there are jobs available every 2^iteration
+			# Once time reaches 64, it checks constantly every minute
+			sleepTime = math.pow(i,2)
+			if sleepTime < 64:
+				time.sleep(sleepTime)
+				continue
+			else:
+				time.sleep(60)
+				continue
+
+		for i in range(0, numJobs):
+			fetchURL = baseURL + job + '/' + jobStr[i]['key']
+			fetchModelFromURL(fetchURL)
 
 # Fetches a job from a given URL using the key
 # Params: URL - the URL as string, of the job to be retrieved
 def fetchModelFromURL(URL):
-	data = None
+	data = json.dumps({'status':'PROCESSED'})
 	print 'Processing model from : ' + URL
 	u = urllib2.urlopen(URL)
 	req = u.read()
 
 	modelStr = json.loads(req)
 	# Obtain the repository and command strings
-	repos = modelStr['target'].strip()
+
+	tarRepos = modelStr['target'].strip()
+	masRepos = modelStr['master'].strip()
 	fExecute = modelStr['command'].replace('python ','').strip()
 
 	# Obtain the folder from the git URL
-	sp = repos.partition('/')
-	repoFolder = sp[2].replace('.git','')
+	sp = tarRepos.partition('/')
+	tarRepoFolder = sp[2].replace('.git','')
+	sp = masRepos.partition('/')
+	masRepoFolder = sp[2].replace('.git','')
 
+	gitCloneUpdateRepo(masRepos, masRepoFolder, fExecute)
+	gitCloneUpdateRepo(tarRepos, tarRepoFolder, fExecute)
+
+
+def gitCloneUpdateRepo(repoFolder, folderName, fExecute):
 	# If the directory exists, update the folder with
 	# the latest code from git
 	# Else clone the repository
-	if os.path.exists(repoFolder):
-		os.chdir(repoFolder)
-		print('Updating git repository to latest version: %s' % (repoFolder))
+	if os.path.exists(folderName):
+		os.chdir(folderName)
+		print('Updating git repository to latest version: %s' % (folderName))
 		os.system('git pull')
 	else:
-		print('Cloning git repository: %s' % (repoFolder))
-		os.system('git clone ' + repos + ' ' + repoFolder)
-		os.chdir(repoFolder);
-
-	# Execute the command retrieved from the JSON string
+		print('Cloning git repository: %s' % (folderName))
+		os.system('git clone ' + repoFolder + ' ' + folderName)
+		os.chdir(folderName);
+		# Execute the command retrieved from the JSON string
 	print('Executing \"' + fExecute + '\" with output...')
 
 	try:
