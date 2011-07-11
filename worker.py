@@ -5,7 +5,7 @@
 # Clones a repo retrieved from data retrieved from the URL
 # Executes a file and logs the result from the downloaded repo
 
-import urllib2, json, os
+import urllib2, json, os, math, time
 from commands import getoutput as cmd
 
 baseURL = 'http://code-comparison.appspot.com/rest/'
@@ -40,12 +40,14 @@ def fetchJobFromURL(job):
 		if numJobs == 0:
 			# Checks to see if there are jobs available every 2^iteration
 			# Once time reaches 64, it checks constantly every minute
-			sleepTime = math.pow(i,2)
+			sleepTime = math.pow(2,(i+1))
 			if sleepTime < 64:
-				time.sleep(sleepTime)
+				print 'Checking back in ' + str(sleepTime) + ' seconds'
+				time.sleep(1)
 				continue
 			else:
-				time.sleep(60)
+				print 'Checking back in ' + str(sleepTime) + ' seconds'
+				time.sleep(1)
 				continue
 
 		for i in range(0, numJobs):
@@ -55,7 +57,6 @@ def fetchJobFromURL(job):
 # Fetches a job from a given URL using the key
 # Params: URL - the URL as string, of the job to be retrieved
 def fetchModelFromURL(URL):
-	data = json.dumps({'status':'PROCESSED'})
 	print 'Processing model from : ' + URL
 	u = urllib2.urlopen(URL)
 	req = u.read()
@@ -65,7 +66,7 @@ def fetchModelFromURL(URL):
 
 	tarRepos = modelStr['target'].strip()
 	masRepos = modelStr['master'].strip()
-	fExecute = modelStr['command'].replace('python ','').strip()
+	fExecute = modelStr['command']
 
 	# Obtain the folder from the git URL
 	sp = tarRepos.partition('/')
@@ -73,11 +74,10 @@ def fetchModelFromURL(URL):
 	sp = masRepos.partition('/')
 	masRepoFolder = sp[2].replace('.git','')
 
-	gitCloneUpdateRepo(masRepos, masRepoFolder, fExecute)
-	gitCloneUpdateRepo(tarRepos, tarRepoFolder, fExecute)
+	gitCloneUpdateRepo(masRepos, masRepoFolder, fExecute, URL)
+	#gitCloneUpdateRepo(tarRepos, tarRepoFolder, fExecute)
 
-
-def gitCloneUpdateRepo(repoFolder, folderName, fExecute):
+def gitCloneUpdateRepo(repoFolder, folderName, fExecute, URL):
 	# If the directory exists, update the folder with
 	# the latest code from git
 	# Else clone the repository
@@ -89,23 +89,32 @@ def gitCloneUpdateRepo(repoFolder, folderName, fExecute):
 		print('Cloning git repository: %s' % (folderName))
 		os.system('git clone ' + repoFolder + ' ' + folderName)
 		os.chdir(folderName);
-		# Execute the command retrieved from the JSON string
-	print('Executing \"' + fExecute + '\" with output...')
 
+	# Execute the command retrieved from the JSON string
+	fContents = ''
+	print('Executing \"' + fExecute + '\" with output...')
 	try:
-		if os.path.isfile(fExecute):
-			os.system('python ' + fExecute + ' > log.txt')
-			if os.path.isfile('ccresult.json'):
-				f = open('ccresult.json','r')
-				fContents = f.read()
-				if checkForJSONValidity(fContents):
-					print 'JSON Validity Approved'
-				else:
-					print 'JSON Validity Not Approved'
+		os.system(fExecute + ' > log.txt')
+		if os.path.isfile('ccresult.json'):
+			f = open('ccresult.json','r')
+			fContents = f.read()
+			if checkForJSONValidity(fContents):
+				print 'JSON Validity Approved'
+			else:
+				print 'JSON Validity Not Approved'
 	except OSError:
 		pass
 
+	f = open('log.txt', 'r+')
+	log = f.read()
+	f.write('')
+	f.close
 	os.chdir('..')
+
+	data = json.dumps({'status':'PROCESSED', 'log': log, 'jsonResult': fContents})
+	print data
+	result = json.loads(urllib2.urlopen(urllib2.Request(URL, data, {'Content-Type': 'application/json'})).read())
+	print 'Logs updated'
 
 # Tests the JSON validity 
 # Params: jsonContent - the data as string, which is tested for validity
