@@ -1,1 +1,1 @@
-This is an output log from test.py
+git version 1.7.4.1

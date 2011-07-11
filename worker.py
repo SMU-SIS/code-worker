@@ -5,7 +5,7 @@
 # Clones a repo retrieved from data retrieved from the URL
 # Executes a file and logs the result from the downloaded repo
 
-import urllib2, json, os, math, time
+import urllib2, json, os, math, time, subprocess
 from commands import getoutput as cmd
 
 baseURL = 'http://code-comparison.appspot.com/rest/'
@@ -17,7 +17,9 @@ def mainWorker():
 
 	jsonStr = json.load(f)
 	for i in range(0, len(jsonStr['type'])):
-		fetchJobFromURL(jsonStr['type'][i])
+		# Set this condition as there are no test jobs for Worker
+		if jsonStr['type'][i].strip() != 'Worker':
+			fetchJobFromURL(jsonStr['type'][i])
 	f.close()
 
 # Fetches a job from a given URL
@@ -28,8 +30,9 @@ def fetchJobFromURL(job):
 	URL = baseURL + job + '?feq_jobType=TEST&fne_status=PROCESSED'
 	# For testing: remove itr otherwise
 	# Will be replaced with while True or any other break condition
-	itr = 10
-	for i in range(0,10):
+
+	for itr in range(0,2):
+		print 'URL ' + URL
 		f = urllib2.urlopen(URL)
 		req = f.read()
 
@@ -40,13 +43,13 @@ def fetchJobFromURL(job):
 		if numJobs == 0:
 			# Checks to see if there are jobs available every 2^iteration
 			# Once time reaches 64, it checks constantly every minute
-			sleepTime = math.pow(2,(i+1))
+			sleepTime = math.pow(2,(itr+1))
 			if sleepTime < 64:
 				print 'Checking back in ' + str(sleepTime) + ' seconds'
 				time.sleep(1)
 				continue
 			else:
-				print 'Checking back in ' + str(sleepTime) + ' seconds'
+				print 'Checking back every minute'
 				time.sleep(1)
 				continue
 
@@ -74,10 +77,51 @@ def fetchModelFromURL(URL):
 	sp = masRepos.partition('/')
 	masRepoFolder = sp[2].replace('.git','')
 
-	gitCloneUpdateRepo(masRepos, masRepoFolder, fExecute, URL)
-	#gitCloneUpdateRepo(tarRepos, tarRepoFolder, fExecute)
+	# Clone the master and target repos
+	print '----------Master:' + masRepos
+	gitCloneUpdateRepo(masRepos, 'master', masRepoFolder, fExecute)
+	print '----------Target:' + tarRepos
+	gitCloneUpdateRepo(tarRepos, 'target', tarRepoFolder, fExecute)
 
-def gitCloneUpdateRepo(repoFolder, folderName, fExecute, URL):
+	# Execute the command retrieved from the JSON string
+	# Execute the command above the master, target dir
+	fContents = ''
+	JSONValid = False
+	print os.path.abspath('.') + '<------------'
+	print('Executing \"' + fExecute + '\" with output...')
+
+	# Capturing output of the device on log.txt
+	fnull = open('log.txt', 'w')
+	result = subprocess.call(fExecute, shell = True, stdout = fnull, stderr = fnull)
+	fnull.close()
+
+	if os.path.isfile('ccresult.json'):
+		f = open('ccresult.json','r+')
+		fContents = f.read()
+		f.write('')
+		f.close()
+		JSONValid = checkForJSONValidity(fContents)
+
+	f = open('log.txt', 'r+')
+	log = f.read()
+	f.write('')
+	#print 'Log: ' + log
+	f.close
+
+	if JSONValid:
+		data = json.dumps({'status':'PROCESSED', 'log':log, 'jsonResult':fContents})
+	else:
+		data = json.dumps({'status':'PROCESSED', 'log':log, 'jsonResult':fContents})
+	fContents = ''
+	#print 'Data: ' + data
+	result = json.loads(urllib2.urlopen(urllib2.Request(URL, data, {'Content-Type': 'application/json'})).read())
+	print 'Logs updated'
+
+
+def gitCloneUpdateRepo(repoFolder, parentName, folderName, fExecute):
+	# Master or target?
+	os.chdir(parentName)
+
 	# If the directory exists, update the folder with
 	# the latest code from git
 	# Else clone the repository
@@ -85,36 +129,12 @@ def gitCloneUpdateRepo(repoFolder, folderName, fExecute, URL):
 		os.chdir(folderName)
 		print('Updating git repository to latest version: %s' % (folderName))
 		os.system('git pull')
+		os.chdir('..')
 	else:
 		print('Cloning git repository: %s' % (folderName))
 		os.system('git clone ' + repoFolder + ' ' + folderName)
-		os.chdir(folderName);
 
-	# Execute the command retrieved from the JSON string
-	fContents = ''
-	print('Executing \"' + fExecute + '\" with output...')
-	try:
-		os.system(fExecute + ' > log.txt')
-		if os.path.isfile('ccresult.json'):
-			f = open('ccresult.json','r')
-			fContents = f.read()
-			if checkForJSONValidity(fContents):
-				print 'JSON Validity Approved'
-			else:
-				print 'JSON Validity Not Approved'
-	except OSError:
-		pass
-
-	f = open('log.txt', 'r+')
-	log = f.read()
-	f.write('')
-	f.close
 	os.chdir('..')
-
-	data = json.dumps({'status':'PROCESSED', 'log': log, 'jsonResult': fContents})
-	print data
-	result = json.loads(urllib2.urlopen(urllib2.Request(URL, data, {'Content-Type': 'application/json'})).read())
-	print 'Logs updated'
 
 # Tests the JSON validity 
 # Params: jsonContent - the data as string, which is tested for validity
