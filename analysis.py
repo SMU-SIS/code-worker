@@ -61,7 +61,7 @@ def run_pep8_count(target, path="tasks\\pep8"):
     ANALYSIS_OUTPUT['PEP8-Issues'] = count
 
 
-def output_to_json_file(json_data, json_file=JSON_OUTPUT_FILE, permission='a', path='json\\'):
+def output_to_json_file(json_data, json_file=JSON_OUTPUT_FILE, permission='a', path=''):
     with open(os.path.abspath(path+json_file), permission) as fp:
         json.dump(json_data, fp, indent=2)
     print json_file + ' updated'
