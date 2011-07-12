@@ -4,12 +4,12 @@
 # Test for encrpyt/decrypt
 
 import encryptData, findDiff
-from encryptData import encryptBZ2AndWriteData, readDataAndDecryptBZ2
+from encryptData import encryptDESAndWriteData
 from findDiff  import findDiffOfDirs
 
 # Test inputs for GAppID and SPwd - success
-print encryptData.encryptBZ2AndWriteData('GoogleAppID', 'ServerPwd', 'keys.txt')
-print encryptData.readDataAndDecryptBZ2('keys.txt')
+#print encryptDESAndWriteData('', '', 'keys.txt', 'code-comparison')
+appid,uname = encryptData.readDataAndDecryptDES('keys.txt', 'code-comparison')
 
 # Test inputs for dir1 and dir2 - success
-print findDiff.findDiffOfDirs('code-worker','code-worker/code-worker','log')
+#print findDiff.findDiffOfDirs('code-worker','code-worker/code-worker','log')

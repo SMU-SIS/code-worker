@@ -18,21 +18,19 @@ def mainWorker():
 	jsonStr = json.load(f)
 	for i in range(0, len(jsonStr['type'])):
 		# Set this condition as there are no test jobs for Worker
-		if jsonStr['type'][i].strip() != 'Worker':
+		if jsonStr['type'][i].strip().lower() != 'Worker':
 			fetchJobFromURL(jsonStr['type'][i])
 	f.close()
 
 # Fetches a job from a given URL
 # Params: job - the type of the job as string, to be retrieved
 def fetchJobFromURL(job):
-	print 'Processing job: ' + job
 	# Concatenate with the base URL
 	URL = baseURL + job + '?feq_jobType=TEST&fne_status=PROCESSED'
+
 	# For testing: remove itr otherwise
 	# Will be replaced with while True or any other break condition
-
-	for itr in range(0,2):
-		print 'URL ' + URL
+	for itr in range(0,30):
 		f = urllib2.urlopen(URL)
 		req = f.read()
 
@@ -46,21 +44,22 @@ def fetchJobFromURL(job):
 			sleepTime = math.pow(2,(itr+1))
 			if sleepTime < 64:
 				print 'Checking back in ' + str(sleepTime) + ' seconds'
-				time.sleep(1)
+				time.sleep(sleepTime)
 				continue
 			else:
 				print 'Checking back every minute'
-				time.sleep(1)
+				time.sleep(60)
 				continue
 
 		for i in range(0, numJobs):
-			fetchURL = baseURL + job + '/' + jobStr[i]['key']
-			fetchModelFromURL(fetchURL)
+			if jobStr[i]['jobType'] != 'KEVIN':
+				fetchURL = baseURL + job + '/' + jobStr[i]['key']
+				fetchModelFromURL(fetchURL)
 
 # Fetches a job from a given URL using the key
 # Params: URL - the URL as string, of the job to be retrieved
 def fetchModelFromURL(URL):
-	print 'Processing model from : ' + URL
+	print 'Processing job from : ' + URL
 	u = urllib2.urlopen(URL)
 	req = u.read()
 
@@ -88,7 +87,7 @@ def fetchModelFromURL(URL):
 	fContents = ''
 	JSONValid = False
 	print os.path.abspath('.') + '<------------'
-	print('Executing \"' + fExecute + '\" with output...')
+	print('Executing \"' + fExecute + '\"')
 
 	# Capturing output of the device on log.txt
 	fnull = open('log.txt', 'w')
@@ -111,7 +110,7 @@ def fetchModelFromURL(URL):
 	if JSONValid:
 		data = json.dumps({'status':'PROCESSED', 'log':log, 'jsonResult':fContents})
 	else:
-		data = json.dumps({'status':'PROCESSED', 'log':log, 'jsonResult':fContents})
+		data = json.dumps({'status':'PROCESSED', 'log':log, 'jsonResult':'Invalid JSON'})
 	fContents = ''
 	#print 'Data: ' + data
 	result = json.loads(urllib2.urlopen(urllib2.Request(URL, data, {'Content-Type': 'application/json'})).read())
