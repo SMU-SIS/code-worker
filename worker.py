@@ -27,10 +27,9 @@ def mainWorker():
 def fetchJobFromURL(job):
 	# Concatenate with the base URL
 	URL = baseURL + job + '?feq_jobType=TEST&fne_status=PROCESSED'
-
-	# For testing: remove itr otherwise
-	# Will be replaced with while True or any other break condition
-	for itr in range(0,30):
+	itr = 0
+	while True:
+		itr = itr + 1
 		f = urllib2.urlopen(URL)
 		req = f.read()
 
@@ -41,7 +40,7 @@ def fetchJobFromURL(job):
 		if numJobs == 0:
 			# Checks to see if there are jobs available every 2^iteration
 			# Once time reaches 64, it checks constantly every minute
-			sleepTime = math.pow(2,(itr+1))
+			sleepTime = math.pow(2,itr)
 			if sleepTime < 64:
 				print 'Checking back in ' + str(sleepTime) + ' seconds'
 				time.sleep(sleepTime)
@@ -52,6 +51,7 @@ def fetchJobFromURL(job):
 				continue
 
 		for i in range(0, numJobs):
+			itr = 0
 			if jobStr[i]['jobType'] != 'KEVIN':
 				fetchURL = baseURL + job + '/' + jobStr[i]['key']
 				fetchModelFromURL(fetchURL)
