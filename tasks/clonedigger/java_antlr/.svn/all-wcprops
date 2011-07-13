@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/clonedigger/!svn/ver/194/trunk/clonedigger/java_antlr
+END
+MyAstNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnroot/clonedigger/!svn/ver/53/trunk/clonedigger/java_antlr/MyAstNode.java
+END
+TreeProducer.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/clonedigger/!svn/ver/53/trunk/clonedigger/java_antlr/TreeProducer.java
+END
+build_jar.sh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnroot/clonedigger/!svn/ver/53/trunk/clonedigger/java_antlr/build_jar.sh
+END
+JavaAST.tokens
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnroot/clonedigger/!svn/ver/53/trunk/clonedigger/java_antlr/JavaAST.tokens
+END
+JavaAST.g
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/clonedigger/!svn/ver/194/trunk/clonedigger/java_antlr/JavaAST.g
+END
+MyAstNodeAdaptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/clonedigger/!svn/ver/53/trunk/clonedigger/java_antlr/MyAstNodeAdaptor.java
+END
+TreeProducer.jar
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/clonedigger/!svn/ver/194/trunk/clonedigger/java_antlr/TreeProducer.jar
+END

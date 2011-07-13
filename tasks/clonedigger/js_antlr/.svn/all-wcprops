@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/clonedigger/!svn/ver/203/trunk/clonedigger/js_antlr
+END
+license.txt
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/clonedigger/!svn/ver/203/trunk/clonedigger/js_antlr/license.txt
+END
+JavaScriptParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/clonedigger/!svn/ver/202/trunk/clonedigger/js_antlr/JavaScriptParser.java
+END
+MyAstNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/clonedigger/!svn/ver/202/trunk/clonedigger/js_antlr/MyAstNode.java
+END
+TreeProducer.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/clonedigger/!svn/ver/202/trunk/clonedigger/js_antlr/TreeProducer.java
+END
+build_jar.sh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svnroot/clonedigger/!svn/ver/202/trunk/clonedigger/js_antlr/build_jar.sh
+END
+JavaScriptLexer.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/clonedigger/!svn/ver/202/trunk/clonedigger/js_antlr/JavaScriptLexer.java
+END
+JavaScript.tokens
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/clonedigger/!svn/ver/202/trunk/clonedigger/js_antlr/JavaScript.tokens
+END
+JavaScript.g
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svnroot/clonedigger/!svn/ver/202/trunk/clonedigger/js_antlr/JavaScript.g
+END
+MyAstNodeAdaptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/clonedigger/!svn/ver/202/trunk/clonedigger/js_antlr/MyAstNodeAdaptor.java
+END
+TreeProducer.jar
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svnroot/clonedigger/!svn/ver/202/trunk/clonedigger/js_antlr/TreeProducer.jar
+END

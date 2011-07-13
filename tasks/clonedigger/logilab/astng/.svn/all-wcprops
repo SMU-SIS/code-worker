@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/clonedigger/!svn/ver/210/trunk/clonedigger/logilab/astng
+END
+astutils.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnroot/clonedigger/!svn/ver/53/trunk/clonedigger/logilab/astng/astutils.py
+END
+nodes.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnroot/clonedigger/!svn/ver/170/trunk/clonedigger/logilab/astng/nodes.py
+END
+__pkginfo__.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/clonedigger/!svn/ver/53/trunk/clonedigger/logilab/astng/__pkginfo__.py
+END
+lookup.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/astng/lookup.py
+END
+manager.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnroot/clonedigger/!svn/ver/170/trunk/clonedigger/logilab/astng/manager.py
+END
+inference.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/astng/inference.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/astng/__init__.py
+END
+_exceptions.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/clonedigger/!svn/ver/53/trunk/clonedigger/logilab/astng/_exceptions.py
+END
+utils.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/astng/utils.py
+END
+scoped_nodes.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/clonedigger/!svn/ver/210/trunk/clonedigger/logilab/astng/scoped_nodes.py
+END
+builder.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnroot/clonedigger/!svn/ver/170/trunk/clonedigger/logilab/astng/builder.py
+END
+inspector.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/astng/inspector.py
+END
+raw_building.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/clonedigger/!svn/ver/60/trunk/clonedigger/logilab/astng/raw_building.py
+END

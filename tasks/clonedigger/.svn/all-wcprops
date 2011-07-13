@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svnroot/clonedigger/!svn/ver/211/trunk/clonedigger
+END
+abstract_syntax_tree.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/clonedigger/!svn/ver/211/trunk/clonedigger/abstract_syntax_tree.py
+END
+ast_suppliers.py
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/clonedigger/!svn/ver/210/trunk/clonedigger/ast_suppliers.py
+END
+html_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/clonedigger/!svn/ver/210/trunk/clonedigger/html_report.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/clonedigger/!svn/ver/62/trunk/clonedigger/__init__.py
+END
+clone_detection_algorithm.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/clonedigger/!svn/ver/197/trunk/clonedigger/clone_detection_algorithm.py
+END
+arguments.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/clonedigger/!svn/ver/173/trunk/clonedigger/arguments.py
+END
+LICENSE.txt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/clonedigger/!svn/ver/53/trunk/clonedigger/LICENSE.txt
+END
+python_compiler.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/clonedigger/!svn/ver/210/trunk/clonedigger/python_compiler.py
+END
+js_antlr.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/clonedigger/!svn/ver/210/trunk/clonedigger/js_antlr.py
+END
+java_antlr.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/clonedigger/!svn/ver/210/trunk/clonedigger/java_antlr.py
+END
+lua_antlr.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/clonedigger/!svn/ver/210/trunk/clonedigger/lua_antlr.py
+END
+clonedigger.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/clonedigger/!svn/ver/209/trunk/clonedigger/clonedigger.py
+END
+suffix_tree.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/clonedigger/!svn/ver/210/trunk/clonedigger/suffix_tree.py
+END
+anti_unification.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/clonedigger/!svn/ver/210/trunk/clonedigger/anti_unification.py
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/clonedigger/!svn/ver/69/trunk/clonedigger/README.txt
+END
