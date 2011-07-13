@@ -1,0 +1,161 @@
+Processing job: Job
+There are 6 TEST jobs pending
+Processing model from : http://code-comparison.appspot.com/rest/Job/ahFzfmNvZGUtY29tcGFyaXNvbnILCxIDSm9iGOezAQw
+----------Master:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+----------Target:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+/home/karthik/Pivotal/code-worker/code-worker<------------
+Executing "python master/code-worker/tasks/pep8/pep8.py -h" with output...
+Log: Usage: pep8.py [options] input ...
+
+Options:
+  --version            show program's version number and exit
+  -h, --help           show this help message and exit
+  -v, --verbose        print status messages, or debug with -vv
+  -q, --quiet          report only file names, or nothing with -qq
+  -r, --repeat         show all occurrences of the same error
+  --exclude=patterns   exclude files or directories which match these comma
+                       separated patterns (default: .svn,CVS,.bzr,.hg,.git)
+  --filename=patterns  when parsing directories, only check filenames matching
+                       these comma separated patterns (default: *.py)
+  --select=errors      select errors and warnings (e.g. E,W6)
+  --ignore=errors      skip errors and warnings (e.g. E4,W)
+  --show-source        show source code for each error
+  --show-pep8          show text of PEP 8 for each error
+  --statistics         count errors and warnings
+  --count              print total number of errors and warnings to standard
+                       error and set exit code to 1 if total is not null
+  --benchmark          measure processing speed
+  --testsuite=dir      run regression tests from dir
+  --doctest            run doctest on myself
+
+{"status": "PROCESSED", "jsonResult": "", "log": "Usage: pep8.py [options] input ...\n\nOptions:\n  --version            show program's version number and exit\n  -h, --help           show this help message and exit\n  -v, --verbose        print status messages, or debug with -vv\n  -q, --quiet          report only file names, or nothing with -qq\n  -r, --repeat         show all occurrences of the same error\n  --exclude=patterns   exclude files or directories which match these comma\n                       separated patterns (default: .svn,CVS,.bzr,.hg,.git)\n  --filename=patterns  when parsing directories, only check filenames matching\n                       these comma separated patterns (default: *.py)\n  --select=errors      select errors and warnings (e.g. E,W6)\n  --ignore=errors      skip errors and warnings (e.g. E4,W)\n  --show-source        show source code for each error\n  --show-pep8          show text of PEP 8 for each error\n  --statistics         count errors and warnings\n  --count              print total number of errors and warnings to standard\n                       error and set exit code to 1 if total is not null\n  --benchmark          measure processing speed\n  --testsuite=dir      run regression tests from dir\n  --doctest            run doctest on myself\n"}
+Logs updated
+Processing model from : http://code-comparison.appspot.com/rest/Job/ahFzfmNvZGUtY29tcGFyaXNvbnILCxIDSm9iGMm7AQw
+----------Master:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+----------Target:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+/home/karthik/Pivotal/code-worker/code-worker<------------
+Executing "python -V" with output...
+Log: Python 2.7.1+
+
+{"status": "PROCESSED", "jsonResult": "", "log": "Python 2.7.1+\n"}
+Logs updated
+Processing model from : http://code-comparison.appspot.com/rest/Job/ahFzfmNvZGUtY29tcGFyaXNvbnILCxIDSm9iGJnLAQw
+----------Master:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+----------Target:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+/home/karthik/Pivotal/code-worker/code-worker<------------
+Executing "java -version" with output...
+Log: java version "1.6.0_22"
+OpenJDK Runtime EnviAlready up-to-date.
+Already up-to-date.
+Already up-to-date.
+Already up-to-date.
+ronment (IcedTea6 1.10.2) (6b22-1.10.2-0ubuntu1~11.04.1)
+OpenJDK 64-Bit Server VM (build 20.0-b11, mixed mode)
+
+{"status": "PROCESSED", "jsonResult": "", "log": "java version \"1.6.0_22\"\nOpenJDK Runtime Environment (IcedTea6 1.10.2) (6b22-1.10.2-0ubuntu1~11.04.1)\nOpenJDK 64-Bit Server VM (build 20.0-b11, mixed mode)\n"}
+Logs updated
+Processing model from : http://code-comparison.appspot.com/rest/Job/ahFzfmNvZGUtY29tcGFyaXNvbnILCxIDSm9iGOvaAQw
+----------Master:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+----------Target:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+/home/karthik/Pivotal/code-worker/code-worker<------------
+Executing "git --version" with output...
+Log: git version 1.7.4.1
+
+{"status": "PROCESSED", "jsonResult": "", "log": "git version 1.7.4.1\n"}
+Logs updated
+Processing model from : http://code-comparison.appspot.com/rest/Job/ahFzfmNvZGUtY29tcGFyaXNvbnILCxIDSm9iGOzaAQw
+----------Master:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+----------Target:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+/home/karthik/Pivotal/code-worker/code-worker<------------
+Executing "python master/code-worker/tasks/clonedigger/clonedigger.py -h" with output...
+Log: Usage: To run Clone Digger type:
+python clonedigger.py [OPTION]... [SOURCE FILE OR DIRECTORY]...
+
+The typical usage is:
+python clonedigger.py source_file_1 source_file_2 ...
+  or
+python clonedigger.py path_to_source_tree
+Don't forget to remove automatically generated sources, tests and third party libraries from the source tree.
+
+Notice:
+The semantics of threshold options is discussed in the paper "Duplicate code detection using anti-unification", which can be downloaded from the site http://clonedigger.sourceforge.net . All arguments are optional. Supported options are: 
+
+
+Options:
+  -h, --help            show this help message and exit
+  -l LANGUAGE, --language=LANGUAGE
+                        the programming language
+  --no-recursion        do not traverse directions recursively
+  -o OUTPUT, --output=OUTPUT
+                        the name of the output file ("output.html" by default)
+  --clustering-threshold=CLUSTERING_THRESHOLD
+                        read the paper for semantics
+  --distance-threshold=DISTANCE_THRESHOLD
+                        the maximum amount of differences between pair of
+                        sequences in clone pair (5 by default). Larger value
+                        leads to larger amount of false positives
+  --hashing-depth=HASHING_DEPTH
+                        default value if 1, read the paper for semantics.
+                        Computation can be speeded up by increasing this value
+                        (but some clones can be missed)
+  --size-threshold=SIZE_THRESHOLD
+                        the minimum clone size. The clone size for its turn is
+                        equal to the count of lines of code in its the largest
+                        fragment
+  --clusterize-using-dcup
+                        mark each statement with its D-cup value instead of
+                        the most similar pattern. This option together with
+                        --hashing-depth=0 make it possible to catch all
+                        considered clones (but it is slow and applicable only
+                        to small programs)
+  --dont-print-time     do not print time
+  -f, --force           
+  --force-diff          force highlighting of differences based on the diff
+                        algorithm
+  --fast                find only clones, which differ in variable and
+                        function names and constants
+  --ignore-dir=IGNORE_DIRS
+                        exclude directories from parsing
+  --eclipse-output=ECLIPSE_OUTPUT
+                        for internal usage only
+  --cpd-output          output as PMDs CPDs XML format. If output file not
+                        defined, output.xml is generated
+  --report-unifiers     
+  --Already up-to-date.
+Already up-to-date.
+func-prefixes=F_PREFIXES
+                        skip functions/methods with these prefixes (provide a
+                        CSV string as argument)
+  --file-list=FILE_LIST
+                        a file that contains a list of file names that must be
+                        processed by Clone Digger
+
+{"status": "PROCESSED", "jsonResult": "", "log": "Usage: To run Clone Digger type:\npython clonedigger.py [OPTION]... [SOURCE FILE OR DIRECTORY]...\n\nThe typical usage is:\npython clonedigger.py source_file_1 source_file_2 ...\n  or\npython clonedigger.py path_to_source_tree\nDon't forget to remove automatically generated sources, tests and third party libraries from the source tree.\n\nNotice:\nThe semantics of threshold options is discussed in the paper \"Duplicate code detection using anti-unification\", which can be downloaded from the site http://clonedigger.sourceforge.net . All arguments are optional. Supported options are: \n\n\nOptions:\n  -h, --help            show this help message and exit\n  -l LANGUAGE, --language=LANGUAGE\n                        the programming language\n  --no-recursion        do not traverse directions recursively\n  -o OUTPUT, --output=OUTPUT\n                        the name of the output file (\"output.html\" by default)\n  --clustering-threshold=CLUSTERING_THRESHOLD\n                        read the paper for semantics\n  --distance-threshold=DISTANCE_THRESHOLD\n                        the maximum amount of differences between pair of\n                        sequences in clone pair (5 by default). Larger value\n                        leads to larger amount of false positives\n  --hashing-depth=HASHING_DEPTH\n                        default value if 1, read the paper for semantics.\n                        Computation can be speeded up by increasing this value\n                        (but some clones can be missed)\n  --size-threshold=SIZE_THRESHOLD\n                        the minimum clone size. The clone size for its turn is\n                        equal to the count of lines of code in its the largest\n                        fragment\n  --clusterize-using-dcup\n                        mark each statement with its D-cup value instead of\n                        the most similar pattern. This option together with\n                        --hashing-depth=0 make it possible to catch all\n                        considered clones (but it is slow and applicable only\n                        to small programs)\n  --dont-print-time     do not print time\n  -f, --force           \n  --force-diff          force highlighting of differences based on the diff\n                        algorithm\n  --fast                find only clones, which differ in variable and\n                        function names and constants\n  --ignore-dir=IGNORE_DIRS\n                        exclude directories from parsing\n  --eclipse-output=ECLIPSE_OUTPUT\n                        for internal usage only\n  --cpd-output          output as PMDs CPDs XML format. If output file not\n                        defined, output.xml is generated\n  --report-unifiers     \n  --func-prefixes=F_PREFIXES\n                        skip functions/methods with these prefixes (provide a\n                        CSV string as argument)\n  --file-list=FILE_LIST\n                        a file that contains a list of file names that must be\n                        processed by Clone Digger\n"}
+Logs updated
+Processing model from : http://code-comparison.appspot.com/rest/Job/ahFzfmNvZGUtY29tcGFyaXNvbnILCxIDSm9iGO3aAQw
+----------Master:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+----------Target:git@github.com:SMU-SIS/code-worker.git
+Updating git repository to latest version: code-worker
+/home/karthik/Pivotal/code-worker/code-worker<------------
+Executing "python master/code-worker/tasks/pep8/pep8.py target --count -qq" with output...
+Log: 2796
+
+{"status": "PROCESSED", "jsonResult": "", "log": "2796\n"}
+Logs updated
+There are 0 TEST jobs pending
+Checking back in 4.0 seconds
+There are 0 TEST jobs pending
+Checking back in 8.0 seconds
+There are 0 TEST jobs pending
+Checking back in 16.0 seconds
