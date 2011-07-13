@@ -29,12 +29,23 @@ result = get_unprocessed_test_jobs()
 test_jobs = [{'command':'python -V', 'jobType':'TEST'}, 
 			 {'command':'java -version', 'jobType':'TEST'}, 
 			 {'command':'git --version', 'jobType':'TEST'}, 
-			 {'command':'python code-worker/tasks/pep8/pep8.py -h', 'jobType':'TEST'},
-			 {'command':'python code-worker/tasks/clonedigger/clonedigger.py -h', 'jobType':'TEST'}, 
-			 #{'command':'code-worker/tasks/pep8/pep8.py -h', 'jobType':'TEST'}, #let pep8.py be executible without typing python or path
-			 #{'command':'code-worker/tasks/clonedigger/clonedigger.py -h', 'jobType':'TEST'}, 
-			 {'command':'python code-worker/tasks/pep8/pep8.py target --count -qq', #target repo should be downloaded to target directory. master repo should be downloaded to master directory
+			 {'command':'python master/code-worker/tasks/pep8/pep8.py -h', 'jobType':'TEST'},
+			 {'command':'python master/code-worker/tasks/clonedigger/clonedigger.py -h', 'jobType':'TEST'}, 
+			 # pep8 on public code-worker repo
+			 {'command':'python master/code-worker/tasks/pep8/pep8.py target --count -qq', 
 			  'target':'git@github.com:SMU-SIS/code-worker.git',
+			  'jobType':'TEST'},
+			  # clonedigger on public code-worker repo
+			  {'command':'python code-worker/tasks/clonedigger/clonedigger.py --fast target', 
+			  'target':'git@github.com:SMU-SIS/code-worker.git',
+			  'jobType':'TEST'},
+			  # pep8 on private CodeComparison repo
+			 {'command':'python master/code-worker/tasks/pep8/pep8.py target --count -qq', 
+			  'target':'git@github.com:SMU-SIS/CodeComparison.git',
+			  'jobType':'TEST'},
+			  {'command':'diff -q target master', 
+			  'target':'git@github.com:SMU-SIS/CodeComparison.git',
+			  'master':'git@github.com:SMU-SIS/CodeComparison.git',
 			  'jobType':'TEST'},
 			 ]
 
